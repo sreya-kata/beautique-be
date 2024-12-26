@@ -1,7 +1,7 @@
 package com.beautique.beautique.repository;
 
 import org.springframework.stereotype.Repository;
-@Repository
-public interface IngredientRepository {
 
+@Repository
+public interface SkincareConcernRepository {
 }

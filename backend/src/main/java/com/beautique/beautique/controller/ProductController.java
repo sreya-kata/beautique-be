@@ -4,6 +4,7 @@ import com.beautique.beautique.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -16,8 +17,9 @@ public class ProductController {
     }
 
     @PostMapping("/fetch")
-    public ResponseEntity<String> fetchProducts() {
-        productService.fetchAndStoreProducts();
+    public ResponseEntity<String> fetchAndStoreProducts(@RequestParam String categoryId,
+                                                        @RequestParam Integer currentPage) {
+        productService.fetchAndStoreProducts(categoryId, currentPage);
         return ResponseEntity.ok("Products fetched and stored successfully.");
     }
 }
