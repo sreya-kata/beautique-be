@@ -17,5 +17,6 @@ public class SephoraProductListResponse {
     public static class CurrentSku {
         private String listPrice;
         private String imageAltText;
+        private String skuId;
     }
 }

@@ -1,6 +1,7 @@
 package com.beautique.beautique.service;
 
 import com.beautique.beautique.dto.SephoraApiResponse;
+import com.beautique.beautique.dto.SephoraProductDetailsResponse;
 import com.beautique.beautique.dto.SephoraProductListResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -46,16 +47,16 @@ public class SephoraApiService {
         }
     }
 
-//    public SephoraProductDetailsResponse fetchProductDetails(String productId, String skuId) {
-//        String productUrl = "https://sephora.p.rapidapi.com/us/products/v2/detail?productId=" + productId + "&preferedSku=" + skuId;
-//        ResponseEntity<SephoraProductDetailsResponse> response =
-//                restTemplate.getForEntity(productUrl, SephoraProductDetailsResponse.class);
-//
-//        if (response.getStatusCode().is2xxSuccessful()) {
-//            return response.getBody();
-//        } else {
-//            throw new RuntimeException("Failed to fetch product details from Sephora: " + productUrl);
-//        }
-//    }
+    public SephoraProductDetailsResponse fetchProductDetails(String productId, String skuId) {
+        String productUrl = "https://sephora.p.rapidapi.com/us/products/v2/detail?productId=" + productId + "&preferedSku=" + skuId;
+        ResponseEntity<SephoraProductDetailsResponse> response =
+                restTemplate.getForEntity(productUrl, SephoraProductDetailsResponse.class);
+
+        if (response.getStatusCode().is2xxSuccessful()) {
+            return response.getBody();
+        } else {
+            throw new RuntimeException("Failed to fetch product details from Sephora: " + productUrl);
+        }
+    }
 }
 
