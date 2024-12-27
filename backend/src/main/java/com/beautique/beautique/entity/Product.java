@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -15,6 +16,9 @@ public class Product {
     @Id
     @Column(name = "product_id")
     private String productId;
+
+    @Transient
+    private String skuId;
 
     @Column(name = "name")
     private String name;

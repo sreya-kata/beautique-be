@@ -10,24 +10,16 @@ import java.util.List;
 public class SephoraProductDetailsResponse {
     private CurrentSku currentSku;
     private ProductDetails productDetails;
+    private String productId;
 
     @Data
     public static class CurrentSku {
-        private List<Highlight> highlights;
         private String ingredientDesc;
-
-        @Data
-        public static class Highlight {
-            private String id;
-            private String altText;
-            private String name;
-            private String imageUrl;
-        }
     }
 
     @Data
     public static class ProductDetails {
         private String shortDescription;
-
+        private String longDescription;
     }
 }
