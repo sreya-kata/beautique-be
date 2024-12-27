@@ -11,8 +11,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "product_concerns", schema = "app",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"product_id", "concern_id"}))
+@Table(name = "product_concerns", schema = "app")
 public class ProductConcern {
 
     @Id

@@ -18,8 +18,9 @@ public class ProductController {
 
     @PostMapping("/fetch")
     public ResponseEntity<String> fetchAndStoreProducts(@RequestParam String categoryId,
-                                                        @RequestParam Integer currentPage) {
-        productService.fetchAndStoreProducts(categoryId, currentPage);
+                                                        @RequestParam Integer currentPage,
+                                                        @RequestParam String category) {
+        productService.fetchAndStoreProducts(categoryId, currentPage, category);
         return ResponseEntity.ok("Products fetched and stored successfully.");
     }
 }

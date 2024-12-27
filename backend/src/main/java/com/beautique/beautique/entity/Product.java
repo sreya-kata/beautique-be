@@ -26,6 +26,9 @@ public class Product {
     @Column(name = "brand")
     private String brand;
 
+    @Column(name = "type")
+    private String type;
+
     @Column(name = "url")
     private String url;
 
@@ -55,6 +58,9 @@ public class Product {
 
     @Column(name = "is_clean_at_sephora")
     private Boolean isCleanAtSephora;
+
+    @Column(name = "suggested_usage", columnDefinition = "TEXT")
+    private String suggestedUsage;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

@@ -9,6 +9,7 @@ import java.util.List;
 @Data
 public class SephoraProductDetailsResponse {
     private CurrentSku currentSku;
+    private ParentCategory parentCategory;
     private ProductDetails productDetails;
     private String productId;
 
@@ -18,8 +19,14 @@ public class SephoraProductDetailsResponse {
     }
 
     @Data
+    public static class ParentCategory {
+        private String displayName;
+    }
+
+    @Data
     public static class ProductDetails {
         private String shortDescription;
         private String longDescription;
+        private String suggestedUsage;
     }
 }
