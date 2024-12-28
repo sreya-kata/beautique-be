@@ -1,6 +1,6 @@
-package com.beautique.beautique.repository;
+package com.beautique.beautique.repository.product;
 
-import com.beautique.beautique.entity.ProductConcern;
+import com.beautique.beautique.entity.product.ProductConcern;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

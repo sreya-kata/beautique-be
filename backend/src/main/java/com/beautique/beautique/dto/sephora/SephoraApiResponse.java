@@ -1,4 +1,4 @@
-package com.beautique.beautique.dto;
+package com.beautique.beautique.dto.sephora;
 
 import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

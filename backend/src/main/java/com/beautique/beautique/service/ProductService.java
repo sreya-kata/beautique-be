@@ -1,28 +1,25 @@
 package com.beautique.beautique.service;
 
-import com.beautique.beautique.dto.SephoraProductDetailsResponse;
-import com.beautique.beautique.dto.SephoraProductListResponse;
+import com.beautique.beautique.dto.sephora.SephoraProductDetailsResponse;
+import com.beautique.beautique.dto.sephora.SephoraProductListResponse;
 import com.beautique.beautique.entity.Concern;
 import com.beautique.beautique.entity.Ingredient;
-import com.beautique.beautique.entity.ProductConcern;
-import com.beautique.beautique.entity.ProductIngredient;
+import com.beautique.beautique.entity.product.ProductConcern;
+import com.beautique.beautique.entity.product.ProductIngredient;
 import com.beautique.beautique.enums.Category;
 import com.beautique.beautique.enums.Source;
-import com.beautique.beautique.entity.Product;
+import com.beautique.beautique.entity.product.Product;
 import com.beautique.beautique.repository.ConcernRepository;
 import com.beautique.beautique.repository.IngredientRepository;
-import com.beautique.beautique.repository.ProductConcernRepository;
-import com.beautique.beautique.repository.ProductIngredientRepository;
-import com.beautique.beautique.repository.ProductRepository;
-import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.beautique.beautique.repository.product.ProductConcernRepository;
+import com.beautique.beautique.repository.product.ProductIngredientRepository;
+import com.beautique.beautique.repository.product.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -45,6 +42,7 @@ public class ProductService {
     private final ProductIngredientRepository productIngredientRepository;
     private final ProductConcernRepository productConcernRepository;
     private final SephoraApiService sephoraApiService;
+
     public ProductService(ProductRepository productRepository,
                           IngredientRepository ingredientRepository,
                           ConcernRepository concernRepository,

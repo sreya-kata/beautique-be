@@ -1,4 +1,4 @@
-package com.beautique.beautique.entity;
+package com.beautique.beautique.entity.product;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

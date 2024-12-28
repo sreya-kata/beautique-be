@@ -1,49 +1,47 @@
 package com.beautique.beautique.service;
 
-import com.beautique.beautique.dto.UserLoginRequest;
-import com.beautique.beautique.dto.UserLoginResponse;
-import com.beautique.beautique.dto.UserRegistrationRequest;
+import com.beautique.beautique.dto.auth.LoginRequest;
+import com.beautique.beautique.dto.auth.LoginResponse;
+import com.beautique.beautique.dto.auth.RegistrationRequest;
 import com.beautique.beautique.entity.User;
 import com.beautique.beautique.repository.UserRepository;
+import com.beautique.beautique.util.JwtTokenUtil;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenUtil jwtTokenUtil;
 
-    public UserService(UserRepository userRepository) {
+    public AuthService(UserRepository userRepository, JwtTokenUtil jwtTokenUtil) {
         this.userRepository = userRepository;
         this.passwordEncoder = new BCryptPasswordEncoder();
+        this.jwtTokenUtil = jwtTokenUtil;
     }
 
-    public void registerUser(UserRegistrationRequest userRegistrationRequest) {
+    public void register(RegistrationRequest registrationRequest) {
         // Hash the password
-        String hashedPassword = passwordEncoder.encode(userRegistrationRequest.getPassword());
+        String hashedPassword = passwordEncoder.encode(registrationRequest.getPassword());
 
         // Create a User entity and save to the database
         User user = new User();
-        user.setEmail(userRegistrationRequest.getEmail());
+        user.setEmail(registrationRequest.getEmail());
         user.setPassword(hashedPassword); // Store the hashed password
-        user.setName(userRegistrationRequest.getName());
+        user.setName(registrationRequest.getName());
         userRepository.save(user);
     }
 
-    public UserLoginResponse loginUser(UserLoginRequest loginRequest) {
-        // Find the user by email
+    public LoginResponse login(LoginRequest loginRequest) {
         User user = userRepository.findUserByEmail(loginRequest.getEmail());
-        if (user == null) throw new RuntimeException("Invalid email or password"));
-
-        // Compare the provided password with the stored hashed password
-        if (!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
+        if (user == null || !passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
             throw new RuntimeException("Invalid email or password");
         }
 
-        // Generate token or proceed with login
         String token = jwtTokenUtil.generateToken(user);
-        return new UserLoginResponse(token, user.getEmail());
+        return new LoginResponse(token, user.getEmail(), user.getUserId());
     }
 
 }

@@ -1,8 +1,8 @@
 package com.beautique.beautique.service;
 
-import com.beautique.beautique.dto.SephoraApiResponse;
-import com.beautique.beautique.dto.SephoraProductDetailsResponse;
-import com.beautique.beautique.dto.SephoraProductListResponse;
+import com.beautique.beautique.dto.sephora.SephoraApiResponse;
+import com.beautique.beautique.dto.sephora.SephoraProductDetailsResponse;
+import com.beautique.beautique.dto.sephora.SephoraProductListResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

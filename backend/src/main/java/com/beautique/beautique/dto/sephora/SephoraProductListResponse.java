@@ -1,6 +1,5 @@
-package com.beautique.beautique.dto;
+package com.beautique.beautique.dto.sephora;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
