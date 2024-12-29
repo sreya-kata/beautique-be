@@ -1,5 +1,6 @@
 package com.beautique.beautique.controller;
 
+import com.beautique.beautique.dto.SkincareProfileResponse;
 import com.beautique.beautique.dto.UserDetailsResponse;
 import com.beautique.beautique.service.ProfileService;
 import org.springframework.http.ResponseEntity;
@@ -30,21 +31,19 @@ public class ProfileController {
         return ResponseEntity.ok("User profile updated successfully.");
     }
 
-//    // Get Skincare Profile
-//    @GetMapping("/{userId}/skincare-profile")
-//    public ResponseEntity<String> updateUserProfile(
-//            @PathVariable Integer userId,
-//            @RequestBody SkincareProfileResponse userProfileResponse) {
-//        userService.updateUserProfile(userId, userProfileResponse);
-//        return ResponseEntity.ok("User profile updated successfully.");
-//    }
-//
-//    // Update or Create Skincare Profile
-//    @PutMapping("/{userId}/skincare-profile")
-//    public ResponseEntity<String> updateUserProfile(
-//            @PathVariable Integer userId,
-//            @RequestBody SkincareProfileResponse userProfileResponse) {
-//        userService.updateUserProfile(userId, userProfileResponse);
-//        return ResponseEntity.ok("User profile updated successfully.");
-//    }
+    // Get Skincare Profile
+    @GetMapping("/{userId}/skincare-profile")
+    public ResponseEntity<SkincareProfileResponse> getSkincareProfile(@PathVariable Integer userId) {
+        SkincareProfileResponse skincareProfileResponse = profileService.getSkincareProfile(userId);
+        return ResponseEntity.ok(skincareProfileResponse);
+    }
+
+    // Update or Create Skincare Profile
+    @PutMapping("/{userId}/skincare-profile")
+    public ResponseEntity<String> createOrUpdateSkincareProfile(
+            @PathVariable Integer userId,
+            @RequestBody SkincareProfileResponse skincareProfileResponse) {
+        profileService.createOrUpdateSkincareProfile(userId, skincareProfileResponse);
+        return ResponseEntity.ok("User profile updated successfully.");
+    }
 }
