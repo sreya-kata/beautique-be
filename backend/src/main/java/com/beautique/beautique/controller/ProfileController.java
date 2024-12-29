@@ -16,14 +16,14 @@ public class ProfileController {
     }
 
     // Get User Profile
-    @GetMapping("/{userId}/details")
+    @GetMapping("/details/{userId}")
     public ResponseEntity<UserDetailsResponse> getUserProfile(@PathVariable Integer userId) {
         UserDetailsResponse userDetails = profileService.getUserDetails(userId);
         return ResponseEntity.ok(userDetails);
     }
 
     // Update User Profile
-    @PutMapping("/{userId}/update")
+    @PutMapping("/update/{userId}")
     public ResponseEntity<String> updateUser(
             @PathVariable Integer userId,
             @RequestBody UserDetailsResponse userDetailsResponse) {
@@ -32,14 +32,14 @@ public class ProfileController {
     }
 
     // Get Skincare Profile
-    @GetMapping("/{userId}/skincare-profile")
+    @GetMapping("/skincare-profile/{userId}")
     public ResponseEntity<SkincareProfileResponse> getSkincareProfile(@PathVariable Integer userId) {
         SkincareProfileResponse skincareProfileResponse = profileService.getSkincareProfile(userId);
         return ResponseEntity.ok(skincareProfileResponse);
     }
 
     // Update or Create Skincare Profile
-    @PutMapping("/{userId}/skincare-profile")
+    @PutMapping("/skincare-profile/{userId}")
     public ResponseEntity<String> createOrUpdateSkincareProfile(
             @PathVariable Integer userId,
             @RequestBody SkincareProfileResponse skincareProfileResponse) {
