@@ -7,6 +7,9 @@ import com.beautique.beautique.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -18,9 +21,12 @@ public class AuthController {
 
     // User Registration
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegistrationRequest registrationRequest) {
-        authService.register(registrationRequest);
-        return ResponseEntity.ok("User registered successfully.");
+    public ResponseEntity<Map<String, Object>> register(@RequestBody RegistrationRequest registrationRequest) {
+        Integer userId = authService.register(registrationRequest);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "User registered successfully.");
+        response.put("userId", userId); // Include userId in the response
+        return ResponseEntity.ok(response);
     }
 
     // User Login

@@ -19,10 +19,4 @@ public class RegistrationRequest {
     @NotNull(message = "Name is required.")
     @Size(max = 50, message = "Name cannot exceed 50 characters.")
     private String name;
-
-    @Size(max = 50, message = "Nickname cannot exceed 50 characters.")
-    private String nickname;
-    private String pronouns;
-    private Integer age;
-    private String gender;
 }

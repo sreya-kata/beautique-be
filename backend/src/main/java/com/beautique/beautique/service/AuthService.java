@@ -22,7 +22,7 @@ public class AuthService {
         this.jwtTokenUtil = jwtTokenUtil;
     }
 
-    public void register(RegistrationRequest registrationRequest) {
+    public Integer register(RegistrationRequest registrationRequest) {
         // Hash the password
         String hashedPassword = passwordEncoder.encode(registrationRequest.getPassword());
 
@@ -32,6 +32,7 @@ public class AuthService {
         user.setPassword(hashedPassword); // Store the hashed password
         user.setName(registrationRequest.getName());
         userRepository.save(user);
+        return user.getUserId();
     }
 
     public LoginResponse login(LoginRequest loginRequest) {
