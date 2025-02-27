@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/profile")
-public class ProfileController {
+public class  ProfileController {
     private final ProfileService profileService;
 
     public ProfileController(ProfileService profileService) {
