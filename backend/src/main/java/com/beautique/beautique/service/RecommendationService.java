@@ -46,7 +46,7 @@ public class RecommendationService {
                 String.join(", ", userConcerns) +
                 " is looking for skincare products. Recommend the best ones from:\n" + productDetails +
                 "\nReturn recommendations in JSON format:\n" +
-                "{ \"recommended_products\": [ { \"product_id\": \"<product_id>\", \"reason\": \"<reason>\" } ] }";
+                "{ \"recommended_products\": [ { \"product_id\": \"<product_id>\" } ] }";
 
         OpenAIRequest request = new OpenAIRequest();
         request.setModel("gpt-3.5-turbo");
@@ -67,7 +67,7 @@ public class RecommendationService {
                 .map(JsonNode::asText)
                 .collect(Collectors.toList());
 
-        return productRepository.findAllById(recommendedProductIds);
-
+        return products.stream().filter(p -> recommendedProductIds.contains(p.getProductId()))
+                .collect(Collectors.toList());
     }
 }
